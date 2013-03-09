@@ -18,18 +18,22 @@ public class CardSolver {
 
 				for(Node l: equations.get(sublev)) {  
 					for(Node r: equations.get(level-sublev-1)) {
+						if(sublev >= level-sublev-1) {
 						Node add = new Node(OperatorType.ADDITION,l,r);
 						add.eval(c);
 						if(add.valid())
 							equations.get(level).add(add);
+						}
 						Node sub = new Node(OperatorType.SUBTRACTION,l,r);
 						if(sub.valid())
 							sub.eval(c);
 						equations.get(level).add(sub);
+						if(sublev >= level-sublev-1) {
 						Node mul = new Node(OperatorType.MULTIPLICATION,l,r);
 						if(mul.valid())
 							mul.eval(c);
 						equations.get(level).add(mul);
+						}
 						Node div = new Node(OperatorType.DIVISION,l,r);
 						try{
 							div.eval(c);
