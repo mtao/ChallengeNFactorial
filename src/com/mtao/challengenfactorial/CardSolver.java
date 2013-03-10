@@ -1,4 +1,4 @@
-package mtao.challengenfactorial;
+package com.mtao.challengenfactorial;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package mtao.challengenfactorial;
+package com.mtao.challengenfactorial;
 import java.util.Random;
 public class CardFactory {
 
@@ -25,7 +25,7 @@ public class CardFactory {
 		} while(!c.hasSolution());
 
 		for(int i=0; i < size; ++i) {
-			System.out.print(c.data[i] + " ");
+			System.out.print(c.get(i) + " ");
 		}
 		System.out.println();
 		return c;

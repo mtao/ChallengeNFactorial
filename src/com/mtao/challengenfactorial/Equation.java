@@ -1,4 +1,4 @@
-package mtao.challengenfactorial;
+package com.mtao.challengenfactorial;
 
 
 class BadIntegerDivisionError extends ArithmeticException {
@@ -43,13 +43,11 @@ class Node{
 		right=rhs;
 		leaves = left.leaves + right.leaves;
 	}
-	int hash() {
-		return -1;
-	}
+	
 	int eval(Card c) {
 		switch(type) {
 		case VALUE:
-			value =  c.data[index];
+			value =  c.get(index);
 			break;
 		case ADDITION:
 			value = left.eval(c) + right.eval(c);

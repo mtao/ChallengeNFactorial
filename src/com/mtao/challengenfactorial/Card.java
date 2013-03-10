@@ -1,27 +1,34 @@
-package mtao.challengenfactorial;
+package com.mtao.challengenfactorial;
 
-public class Card {
-	Card(int size) {
+class Card {
+	
+	public Card(int size) {
 		data = new int[size];
 	}
-	Card(int val[]) {
+	public Card(int val[]) {
 		set(val);
 	}
-	void set(int i, int val) {
+	
+	public int get(int i) {
+		return data[i];
+	}
+	
+	public void set(int i, int val) {
 		data[i] = val;
 	}
-	void set(int val[]) {
+	public void set(int val[]) {
 		if(data.length == val.length) {
 		data = val.clone();
 		}
 	}
-	boolean hasSolution() {
+	
+	public boolean hasSolution() {
 		Equation e = findSolution();
 		
 		return (e != null) && e.eval(this) == CardFactory.targetValue;
 	
 	}
-	Equation findSolution() {
+	public Equation findSolution() {
 		CardSolver solver = new CardSolver(this);
 		if(solver.solutions.size() > 0) {
 			return new Equation(solver.solutions.get(0));
@@ -29,9 +36,9 @@ public class Card {
 		return null;
 	}
 	
-	Equation findSolution(Equation eqn) {
+	public Equation findSolution(Equation eqn) {
 		return eqn;
 	}
-	int[] data;
+	private	int[] data;
 
 }
