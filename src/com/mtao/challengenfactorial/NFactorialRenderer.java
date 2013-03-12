@@ -20,16 +20,19 @@ public class NFactorialRenderer implements Renderer {
 	public NFactorialRenderer(/*Bitmap b*/) {
 		// TODO Auto-generated constructor stub
 		/*this.numbers = b;*/
-		Matrix.setLookAtM(mvp, 0, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f);
+		Matrix.setIdentityM(viewMat, 0);
+		Matrix.translateM(viewMat, 0, 0f, 0f, -1f);
 	}
 	
-	private final float mvp[] = new float[16];
+	private final float viewMat[] = new float[16];
+	private final float perspectiveMat[] = new float[16];
+	private float mvp[] = new float[16];
 	
 	@Override
 	public void onDrawFrame(GL10 unused) {
 		// TODO Auto-generated method stub
 
-		
+		Matrix.multiplyMM(mvp, 0, perspectiveMat, 0, viewMat, 0);
 		GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);
 		sqr.draw(mvp);
 	}
@@ -41,6 +44,11 @@ public class NFactorialRenderer implements Renderer {
 		// TODO Auto-generated method stub
 		GLES20.glViewport(0, 0, width, height);
 		
+		// adjust ortho matrix for aspect ratio
+		float aspectRatio = ((float)width)/height;
+		float perspectiveHeight = 5f;
+		float perspectiveWidth = perspectiveHeight * aspectRatio ;
+		Matrix.orthoM(perspectiveMat, 0, -perspectiveWidth, perspectiveWidth, -perspectiveHeight, perspectiveHeight, -1f, 1f);
 		
 	}
 
