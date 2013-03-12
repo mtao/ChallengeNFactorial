@@ -24,7 +24,7 @@ public class PlayActivity extends Activity {
 */
 public class PlayActivity extends Activity {
 
-    private GLSurfaceView mGLView;
+//    private GLSurfaceView mGLView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,8 @@ public class PlayActivity extends Activity {
 
         // Create a GLSurfaceView instance and set it
         // as the ContentView for this Activity.
-        mGLView = new NFactorialGLSurfaceView(this);
-        setContentView(mGLView);
+//        mGLView = new NFactorialGLSurfaceView(this);
+//        setContentView(mGLView);
+        setContentView(new SimpleView(getApplicationContext()));
     }
 }
