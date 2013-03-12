@@ -1,13 +1,14 @@
 package com.mtao.challengenfactorial;
 
-import android.annotation.SuppressLint;
+//import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Bitmap;
+//import android.graphics.Bitmap;
 import android.opengl.GLSurfaceView;
 import android.view.MotionEvent;
-import android.view.TextureView;
-import android.widget.ImageView;
+//import android.view.TextureView;
+//import android.widget.ImageView;
 import android.util.Log;
+
 public class NFactorialGLSurfaceView extends GLSurfaceView {
 
 	public NFactorialGLSurfaceView(Context context) {
@@ -15,8 +16,8 @@ public class NFactorialGLSurfaceView extends GLSurfaceView {
 		setEGLContextClientVersion(2);
 		// TODO Auto-generated constructor stub
 		//Bitmap digits = ((TextureView)findViewById(R.drawable.digits)).getBitmap();
-		super.setEGLConfigChooser(8 , 8, 8, 8, 16, 0);
-		setRenderer(renderer = new NFactorialRenderer());
+		super.setEGLConfigChooser(8, 8, 8, 8, 16, 0);
+		setRenderer(new ChallengeRenderer());
 	}
 	
 	public boolean onTouchEvent(MotionEvent e) {
@@ -62,7 +63,7 @@ public class NFactorialGLSurfaceView extends GLSurfaceView {
 		
 		
 	}
-	private NFactorialRenderer renderer;
+//	private Renderer renderer;
 	private Vector2 mouseDown = new Vector2(0,0);
 	private OperatorType optype = OperatorType.VALUE;
 }

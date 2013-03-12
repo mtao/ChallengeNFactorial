@@ -17,8 +17,8 @@ public class NumberBlock {
 		for(;value > 0;++digits,value/=10);
 
 		mProgram = GLES20.glCreateProgram();
-		int vshader = NFactorialRenderer.loadShader(GLES20.GL_VERTEX_SHADER, vertexShaderCode);
-		int fshader = NFactorialRenderer.loadShader(GLES20.GL_FRAGMENT_SHADER, fragmentShaderCode);
+		int vshader = ChallengeRenderer.loadShader(GLES20.GL_VERTEX_SHADER, vertexShaderCode);
+		int fshader = ChallengeRenderer.loadShader(GLES20.GL_FRAGMENT_SHADER, fragmentShaderCode);
 		GLES20.glAttachShader(mProgram, vshader);
 		GLES20.glAttachShader(mProgram, fshader);
 		GLES20.glLinkProgram(mProgram);

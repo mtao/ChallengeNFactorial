@@ -10,14 +10,13 @@ import javax.microedition.khronos.opengles.GL10;
 
 import android.graphics.Bitmap;
 import android.opengl.GLES20;
-import android.opengl.GLUtils;
 import android.opengl.Matrix;
-import android.opengl.GLSurfaceView.Renderer;
+import android.opengl.GLSurfaceView;
 import android.util.Log;
 
-public class NFactorialRenderer implements Renderer {
+public class ChallengeRenderer implements GLSurfaceView.Renderer {
 
-	public NFactorialRenderer(/*Bitmap b*/) {
+	public ChallengeRenderer(/*Bitmap b*/) {
 		// TODO Auto-generated constructor stub
 		/*this.numbers = b;*/
 		Matrix.setIdentityM(viewMat, 0);
@@ -160,9 +159,9 @@ class Square {
         drawListBuffer.position(0);
 
         // prepare shaders and OpenGL program
-        int vertexShader = NFactorialRenderer.loadShader(GLES20.GL_VERTEX_SHADER,
+        int vertexShader = ChallengeRenderer.loadShader(GLES20.GL_VERTEX_SHADER,
                                                    vertexShaderCode);
-        int fragmentShader = NFactorialRenderer.loadShader(GLES20.GL_FRAGMENT_SHADER,
+        int fragmentShader = ChallengeRenderer.loadShader(GLES20.GL_FRAGMENT_SHADER,
                                                      fragmentShaderCode);
 
         mProgram = GLES20.glCreateProgram();             // create empty OpenGL Program
@@ -194,11 +193,11 @@ class Square {
 
         // get handle to shape's transformation matrix
         mMVPMatrixHandle = GLES20.glGetUniformLocation(mProgram, "uMVPMatrix");
-        NFactorialRenderer.checkGlError("glGetUniformLocation");
+        ChallengeRenderer.checkGlError("glGetUniformLocation");
 
         // Apply the projection and view transformation
         GLES20.glUniformMatrix4fv(mMVPMatrixHandle, 1, false, mvpMatrix, 0);
-        NFactorialRenderer.checkGlError("glUniformMatrix4fv");
+        ChallengeRenderer.checkGlError("glUniformMatrix4fv");
 
         // Draw the square
         GLES20.glDrawElements(GLES20.GL_TRIANGLES, drawOrder.length,
