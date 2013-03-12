@@ -15,6 +15,7 @@ public class NFactorialGLSurfaceView extends GLSurfaceView {
 		setEGLContextClientVersion(2);
 		// TODO Auto-generated constructor stub
 		//Bitmap digits = ((TextureView)findViewById(R.drawable.digits)).getBitmap();
+		super.setEGLConfigChooser(8 , 8, 8, 8, 16, 0);
 		setRenderer(renderer = new NFactorialRenderer());
 	}
 	

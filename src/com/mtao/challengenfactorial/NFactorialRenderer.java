@@ -11,6 +11,7 @@ import javax.microedition.khronos.opengles.GL10;
 import android.graphics.Bitmap;
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
+import android.opengl.Matrix;
 import android.opengl.GLSurfaceView.Renderer;
 import android.util.Log;
 
@@ -19,14 +20,18 @@ public class NFactorialRenderer implements Renderer {
 	public NFactorialRenderer(/*Bitmap b*/) {
 		// TODO Auto-generated constructor stub
 		/*this.numbers = b;*/
+		Matrix.setLookAtM(mvp, 0, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f);
 	}
+	
+	private final float mvp[] = new float[16];
+	
 	@Override
 	public void onDrawFrame(GL10 unused) {
 		// TODO Auto-generated method stub
 
 		
 		GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);
-		num.draw();
+		sqr.draw(mvp);
 	}
 
 	NumberBlock num;
@@ -56,9 +61,10 @@ public class NFactorialRenderer implements Renderer {
 		GLES20.glTexParameterf(GL10.GL_TEXTURE_2D, GLES20.GL_TEXTURE_WRAP_T, GLES20.GL_REPEAT);
 		GLUtils.texImage2D(GLES20.GL_TEXTURE_2D, 0, numbers, 0);
 */
-		num = new NumberBlock(2, new Vector2(0,0), .1f);
+//		num = new NumberBlock(2, new Vector2(0,0), .1f);
 		sqr = new Square();
 	}
+	
 	public static int loadShader(int type, String shaderCode){
 
 		// create a vertex shader type (GLES20.GL_VERTEX_SHADER)
@@ -71,6 +77,7 @@ public class NFactorialRenderer implements Renderer {
 
 		return shader;
 	}    
+	
 	public static void checkGlError(String glOperation) {
         int error;
         while ((error = GLES20.glGetError()) != GLES20.GL_NO_ERROR) {
