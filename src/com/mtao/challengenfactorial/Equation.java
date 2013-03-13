@@ -8,23 +8,28 @@ class BadIntegerDivisionError extends ArithmeticException {
 	 */
 	private static final long serialVersionUID = 1L;
 }
-class Node{
+
+class Node {
 	int index;
 	
 	Node left;
 	Node right;
 	int leaves=1;
 	int value;
+	int varusage[];
 	OperatorType type = OperatorType.VALUE;
-	Node(int i){
+	
+	Node(int i) {
 		index = i;
 		varusage = new int[CardFactory.size];
 		varusage[i] = 1;
 	}
+	
 	Node() {
 		varusage = new int[CardFactory.size];
 	}
-	boolean valid(){
+	
+	boolean valid() {
 		for(int i=0; i < CardFactory.size; ++i) {
 			if(varusage[i] > 1) {
 				return false;
@@ -32,7 +37,7 @@ class Node{
 		}
 		return true;
 	}
-	int varusage[];
+	
 	Node(OperatorType t, Node lhs, Node rhs) {
 		varusage = new int[CardFactory.size];
 		for(int i=0; i < CardFactory.size; ++i) {

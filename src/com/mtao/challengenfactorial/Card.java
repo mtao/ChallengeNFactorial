@@ -40,5 +40,15 @@ class Card {
 		return eqn;
 	}
 	private	int[] data;
+	
+	@Override
+	public String toString() {
+		String result = "";
+		for (int i : data) {
+			result += String.format("%d ", i);
+		}
+		
+		return result;
+	}
 
 }
