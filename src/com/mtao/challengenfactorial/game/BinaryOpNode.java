@@ -40,3 +40,10 @@ public abstract class BinaryOpNode implements IExpressionNode {
 	}
 
 }
+class BadIntegerDivisionError extends ArithmeticException {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+}

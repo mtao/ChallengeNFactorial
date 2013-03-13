@@ -50,5 +50,9 @@ class Card {
 		
 		return result;
 	}
+	public int[] values() {
+		return data;
+
+	}
 
 }

@@ -33,7 +33,7 @@ public class PlayActivity extends Activity {
         // Create a GLSurfaceView instance and set it
         // as the ContentView for this Activity.
         mGLView = new NFactorialGLSurfaceView(this);
-        setContentView(mGLView);
-//        setContentView(new SimpleView(getApplicationContext()));
+//        setContentView(mGLView);
+        setContentView(new SimpleView(getApplicationContext()));
     }
 }
