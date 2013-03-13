@@ -2,16 +2,16 @@ package com.mtao.challengenfactorial.game;
 
 public final class ValueNode implements IExpressionNode {
 	
-	private final int mVal;
+	public final int val;
 	
 	public ValueNode(int v) {
-		mVal = v;
+		val = v;
 	}
 
 	@Override
 	public float eval() {
 		// TODO Auto-generated method stub
-		return mVal;
+		return val;
 	}
 
 	@Override
@@ -25,7 +25,7 @@ public final class ValueNode implements IExpressionNode {
 		
 		if (other instanceof ValueNode) {
 			ValueNode that = (ValueNode) other;
-			return this.mVal == that.mVal;
+			return this.val == that.val;
 		}
 		
 		return false;
