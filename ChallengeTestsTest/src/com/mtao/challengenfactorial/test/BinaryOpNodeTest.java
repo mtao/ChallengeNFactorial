@@ -14,7 +14,8 @@ public class BinaryOpNodeTest extends TestCase {
 	private ValueNode lNode;
 	private ValueNode rNode;
 	private BinaryOpNode tree;
-
+	
+	@Override
 	protected void setUp() throws Exception {
 		super.setUp();
 		lNode = new ValueNode(mRng.nextInt());
@@ -36,6 +37,17 @@ public class BinaryOpNodeTest extends TestCase {
 	
 	public void testEvalTree() {
 		assertEquals(tree.eval(), 42+(69*7));
+	}
+	
+	public void testEvalDiv() {
+		BinaryOpNode bin = OpFactory.div(new ValueNode(7), new ValueNode(2));
+		try {
+			bin.eval();
+			fail("Should have thrown exception!");
+		}
+		catch (ArithmeticException e) {
+			assertTrue(true);
+		}
 	}
 
 	public void testNumLeaves() {
