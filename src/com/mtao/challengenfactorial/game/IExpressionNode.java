@@ -9,7 +9,7 @@ public interface IExpressionNode {
 	/**
 	 * @return the value of the evaluated expression tree
 	 */
-	public float eval();
+	public int eval() throws ArithmeticException;
 	
 	public int numLeaves();
 	

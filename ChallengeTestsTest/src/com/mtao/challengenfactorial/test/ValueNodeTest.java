@@ -6,13 +6,9 @@ import com.mtao.challengenfactorial.game.ValueNode;
 
 import junit.framework.TestCase;
 
-public class ExpressionTester extends TestCase {
+public class ValueNodeTest extends TestCase {
 	
-	private Random mRng;
-	
-	public ExpressionTester() {
-		mRng = new Random();
-	}
+	private final Random mRng = new Random();
 
 	public void testValueNode() {
 		int r = mRng.nextInt();
@@ -21,9 +17,9 @@ public class ExpressionTester extends TestCase {
 	}
 
 	public void testEval() {
-		int r = mRng.nextInt(100);
+		int r = mRng.nextInt();
 		ValueNode v = new ValueNode(r);
-		assertEquals(v.eval(), (float)r);
+		assertEquals(v.eval(), r);
 	}
 
 	public void testNumLeaves() {
@@ -37,6 +33,12 @@ public class ExpressionTester extends TestCase {
 		ValueNode a = new ValueNode(r);
 		ValueNode b = new ValueNode(r);
 		assertEquals(a, b);
+	}
+	
+	public void testToString() {
+		int r = mRng.nextInt();
+		ValueNode v = new ValueNode(r);
+		assertEquals(v.toString(), Integer.toString(r));
 	}
 
 }
