@@ -13,7 +13,7 @@ public abstract class UnaryOpNode implements IExpressionNode {
 	}
 
 	@Override
-	public abstract float eval();
+	public abstract int eval() throws ArithmeticException;
 
 	@Override
 	public int numLeaves() {

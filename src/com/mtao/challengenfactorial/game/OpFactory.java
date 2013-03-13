@@ -9,7 +9,7 @@ public final class OpFactory {
 		return new BinaryOpNode(l, r) {
 			@Override public String opString() { return "+"; }
 			
-			@Override public float eval() { return left.eval() + right.eval(); }
+			@Override public int eval() { return left.eval() + right.eval(); }
 		};
 	}
 	
@@ -17,7 +17,7 @@ public final class OpFactory {
 		return new BinaryOpNode(l, r) {
 			@Override public String opString() { return "-"; }
 			
-			@Override public float eval() { return left.eval() - right.eval(); }
+			@Override public int eval() { return left.eval() - right.eval(); }
 		};
 	}
 	
@@ -25,7 +25,7 @@ public final class OpFactory {
 		return new BinaryOpNode(l, r) {
 			@Override public String opString() { return "*"; }
 			
-			@Override public float eval() { return left.eval() * right.eval(); }
+			@Override public int eval() { return left.eval() * right.eval(); }
 		};
 	}
 	
@@ -33,7 +33,14 @@ public final class OpFactory {
 		return new BinaryOpNode(l, r) {
 			@Override public String opString() { return "/"; }
 			
-			@Override public float eval() { return left.eval() / right.eval(); }
+			@Override public int eval() {
+				int l = left.eval();
+				int r = right.eval();
+				if (l % r != 0) {
+					throw new ArithmeticException();
+				}
+				return left.eval() / right.eval();
+			}
 		};
 	}
 

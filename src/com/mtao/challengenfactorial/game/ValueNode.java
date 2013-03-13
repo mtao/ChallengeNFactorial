@@ -9,14 +9,18 @@ public final class ValueNode implements IExpressionNode {
 	}
 
 	@Override
-	public float eval() {
-		// TODO Auto-generated method stub
+	public int eval() {
 		return val;
 	}
 
 	@Override
 	public int numLeaves() {
 		return 1;
+	}
+	
+	@Override
+	public String toString() {
+		return Integer.toString(val);
 	}
 	
 	@Override

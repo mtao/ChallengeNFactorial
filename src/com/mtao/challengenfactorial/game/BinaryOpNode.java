@@ -13,8 +13,7 @@ public abstract class BinaryOpNode implements IExpressionNode {
 		right = r;
 	}
 
-	@Override
-	public abstract float eval();
+	@Override public abstract int eval() throws ArithmeticException;
 	
 	public abstract String opString();
 
