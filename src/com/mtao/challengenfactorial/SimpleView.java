@@ -83,7 +83,15 @@ public class SimpleView extends View {
 	@Override
 	public void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
-		if(mMode == GameMode.Victory) {
+		switch(mMode) {
+		case ValuePairSelection:
+			canvas.drawText("ValuePairSelection", 30, 50, mPaint);
+			break;
+		case OperatorSelection:
+			canvas.drawText("OperatorSelection", 30, 50, mPaint);
+			break;
+		case Victory:
+			canvas.drawText("Victory1!!!!!", 30, 50, mPaint);
 			return;
 		}
 		if(mDragStart != null) {
@@ -242,7 +250,7 @@ public class SimpleView extends View {
 			case MotionEvent.ACTION_DOWN: {
 
 
-				for(int i=0; i < mPos.length; ++i) {
+				for(int i=0; i < 4; ++i) {
 					
 					if(mOpBounds[i].contains((int)x, (int)y)) {
 						System.out.println(i);
@@ -262,6 +270,8 @@ public class SimpleView extends View {
 						default:
 							break;
 						}
+					} else {
+						System.out.println(i);
 					}
 				}
 
@@ -291,11 +301,18 @@ public class SimpleView extends View {
 		Card c = new Card(2);
 		c.set(0,mValues[mSelectedLHS]);
 		c.set(1,mValues[mSelectedRHS]);
-		int newval = n.eval(c);
+		int newval;
+		try{
+		newval = n.eval(c);
+		}
+		catch (BadIntegerDivisionError E){
+			resetCard();
+			return;
+		}
 		Log.i("info",mValues[mSelectedLHS] + " " + mValues[mSelectedRHS] + " " + newval);
 
 		Log.i("size", mValues.length+"");
-		if(mValues.length == 2) {
+		if(mValues.length <= 2) {
 			if (newval == 24) {
 				mMode = GameMode.Victory;
 				invalidate();
